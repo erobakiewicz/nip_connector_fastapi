@@ -5,6 +5,11 @@ name = "pypi"
 
 [packages]
 fastapi = "*"
+sqlalchemy = "*"
+flake8 = "*"
+python-multipart = "*"
+aiofiles = "*"
+zeep = "*"
 
 [dev-packages]
 
@@ -13,3 +18,9 @@ python_version = "3.9"
 
 [packages.uvicorn]
 extras = [ "standard",]
+
+[packages.passlib]
+extras = [ "bcrypt",]
+
+[packages.python-jose]
+extras = [ "cryptography",]
