@@ -10,6 +10,9 @@ flake8 = "*"
 python-multipart = "*"
 aiofiles = "*"
 zeep = "*"
+python-dotenv = "*"
+psycopg2-binary = "*"
+alembic = "*"
 
 [dev-packages]
 
