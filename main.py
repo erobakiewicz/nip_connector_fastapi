@@ -5,6 +5,7 @@ from requests import Session as request_session
 from sqlalchemy.orm import Session as sql_session
 from zeep import Transport, Client
 
+from src import models
 from src.database import SessionLocal
 from src.models import Company
 
@@ -42,7 +43,7 @@ def get_company_by_nip(nip):
 
 
 @app.get("/{nip}")
-async def get_company(nip: int):
+async def get_company_regon_api(nip: int):
     return get_company_by_nip(nip)
 
 
@@ -55,3 +56,13 @@ async def create_company(nip: int, db: sql_session = Depends(get_db)):
     db.commit()
     db.refresh(db_company)
     return db_company
+
+
+@app.get("/companies/")
+async def get_all_companies(db: sql_session = Depends(get_db)):
+    return db.query(models.Company).all()
+
+
+@app.get("/companies/{nip}")
+async def get__company(nip: int, db: sql_session = Depends(get_db)):
+    return db.query(models.Company).filter(models.Company.nip == nip).first()

@@ -5,6 +5,6 @@ from pydantic import BaseModel
 
 class Company(BaseModel):
     id: int
-    nip: Optional[str] = None
-    regon: Optional[str] = None
+    nip: int
+    regon: int
     name: Optional[str] = None
