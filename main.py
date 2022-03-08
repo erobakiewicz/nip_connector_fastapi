@@ -47,7 +47,7 @@ async def get_company_regon_api(nip: int):
     return get_company_by_nip(nip)
 
 
-@app.get("/create/{nip}")
+@app.post("/create/{nip}")
 async def create_company(nip: int, db: sql_session = Depends(get_db)):
     company_data = get_company_by_nip(nip)
     db_company = Company(nip=company_data.get("Nip"), regon=company_data.get("Regon"),
